@@ -1,0 +1,13 @@
+# Large binary files / OS images
+*.iso
+*.img
+rhel-8.6-x86_64-dvd.iso
+
+# OS generated files
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Logs and temp files
+*.log
+*.tmp
