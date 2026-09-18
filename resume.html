@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammed Rahees CP - Resume | Software Support Engineer</title>
+  <meta name="description" content="Professional Resume of Mohammed Rahees CP - Software Support Engineer specializing in SQL Database Management, HRMS, ERP, and Enterprise Production Support.">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-light: #64748b;
+      --border-color: #cbd5e1;
+      --bg-page: #f1f5f9;
+      --bg-card: #ffffff;
+      --accent: #0284c7;
+      --tag-bg: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-page);
+      line-height: 1.5;
+      font-size: 13.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Floating Toolbar */
+    .resume-toolbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      background: #0f172a;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      z-index: 9999;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .toolbar-brand {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .t-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .t-btn-primary {
+      background: #0284c7;
+      color: #ffffff;
+    }
+
+    .t-btn-primary:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+
+    .t-btn-outline {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f1f5f9;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .t-btn-outline:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+
+    /* Resume Document Container */
+    .resume-container {
+      max-width: 850px;
+      margin: 80px auto 40px auto;
+      background: var(--bg-card);
+      border-radius: 8px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      padding: 2.75rem 3rem;
+      position: relative;
+    }
+
+    /* Header */
+    .resume-header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .resume-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+
+    .resume-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.01em;
+      margin-bottom: 0.85rem;
+    }
+
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.4rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-item i {
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+
+    .contact-item a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    /* Section Styles */
+    .section {
+      margin-bottom: 1.4rem;
+    }
+
+    .section-heading {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #0f172a;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.35rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-heading i {
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    /* Summary */
+    .summary-text {
+      color: var(--text-muted);
+      line-height: 1.55;
+      text-align: justify;
+    }
+
+    /* Experience */
+    .exp-item {
+      margin-bottom: 1.1rem;
+    }
+
+    .exp-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.2rem;
+    }
+
+    .exp-role {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .exp-period {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      background: var(--primary-light);
+      padding: 0.15rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    .exp-company {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-bullets {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .exp-bullets li {
+      position: relative;
+      padding-left: 1.15rem;
+      margin-bottom: 0.35rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .exp-bullets li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      top: -1px;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem 1.5rem;
+    }
+
+    .skill-category {
+      background: var(--tag-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.65rem 0.85rem;
+    }
+
+    .skill-cat-title {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #0f172a;
+      margin-bottom: 0.35rem;
+    }
+
+    .skill-cat-items {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Enterprise Clients Grid */
+    .clients-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.4rem;
+    }
+
+    .client-pill {
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      color: #1e293b;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .client-pill i {
+      color: var(--primary);
+      font-size: 0.75rem;
+    }
+
+    /* Education & Certifications */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .edu-item h4, .cert-item h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .edu-item p, .cert-item p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Print Specific Styles */
+    @media print {
+      body {
+        background: #ffffff !important;
+        font-size: 11.5pt;
+        color: #000000 !important;
+      }
+
+      .resume-toolbar {
+        display: none !important;
+      }
+
+      .resume-container {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+      }
+
+      .resume-header {
+        border-bottom: 2pt solid #0284c7 !important;
+        padding-bottom: 8pt !important;
+        margin-bottom: 10pt !important;
+      }
+
+      .resume-name {
+        font-size: 20pt !important;
+      }
+
+      .resume-title {
+        font-size: 11pt !important;
+        color: #0284c7 !important;
+      }
+
+      .exp-period {
+        background: none !important;
+        color: #0369a1 !important;
+        padding: 0 !important;
+      }
+
+      .section {
+        margin-bottom: 10pt !important;
+        page-break-inside: avoid;
+      }
+
+      a {
+        text-decoration: none !important;
+        color: inherit !important;
+      }
+
+      @page {
+        margin: 1.2cm 1.5cm;
+        size: A4 portrait;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .resume-container {
+        padding: 1.5rem;
+        margin-top: 70px;
+      }
+      .skills-grid, .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Floating Action Toolbar (Screen only) -->
+  <header class="resume-toolbar">
+    <div class="toolbar-left">
+      <div class="toolbar-brand">
+        <i class="fa-solid fa-file-pdf"></i> Mohammed Rahees CP — Resume
+      </div>
+    </div>
+    <div class="toolbar-actions">
+      <a href="index.html" class="t-btn t-btn-outline" title="Return to interactive portfolio">
+        <i class="fa-solid fa-arrow-left"></i> Portfolio
+      </a>
+      <button onclick="window.print()" class="t-btn t-btn-primary" title="Print or save as PDF">
+        <i class="fa-solid fa-download"></i> Download / Print PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- Resume Document Layout -->
+  <main class="resume-container">
+    <!-- Header -->
+    <header class="resume-header">
+      <h1 class="resume-name">MOHAMMED RAHEES CP</h1>
+      <div class="resume-title">Software Support Engineer & Enterprise Systems Specialist</div>
+      <div class="contact-bar">
+        <span class="contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:+917994147039">+91 7994147039</a>
+        </span>
+        <span class="contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:raheesc83@gmail.com">raheesc83@gmail.com</a>
+        </span>
+        <span class="contact-item">
+          <i class="fa-solid fa-briefcase"></i>
+          <a href="mailto:rahees.cp@dli-pdc.com">rahees.cp@dli-pdc.com</a>
+        </span>
+        <span class="contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Kerala, India (Open to Relocation / Remote)</span>
+        </span>
+        <span class="contact-item">
+          <i class="fa-brands fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/mohammed-rahees-cp" target="_blank" rel="noopener noreferrer">linkedin.com/in/mohammed-rahees-cp</a>
+        </span>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="section">
+      <h2 class="section-heading"><i class="fa-solid fa-user-check"></i> Executive Summary</h2>
+      <p class="summary-text">
+        Enterprise-oriented <strong>Software Support Engineer</strong> with <strong>3+ years of experience</strong> providing mission-critical Tier-2/Tier-3 application support, database engineering, and system administration. Proven track record of delivering <strong>99.8% SLA compliance</strong> across <strong>500+ resolved technical incidents</strong> for Fortune 500 multinationals, retail conglomerates, and digital banking platforms. Adept at deep-dive SQL query optimization, biometric attendance sync, HRMS & ERP payroll integrations, root cause analysis (RCA), and incident lifecycle mitigation.
+      </p>
+    </section>
+
+    <!-- Professional Experience -->
+    <section class="section">
+      <h2 class="section-heading"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Software Support Engineer</span>
+          <span class="exp-period">2023 - Present</span>
+        </div>
+        <div class="exp-company">Enterprise Application & Tech Services</div>
+        <ul class="exp-bullets">
+          <li>Delivered dedicated L2/L3 production support for enterprise HRMS and ERP platforms, maintaining an overall <strong>99.8% SLA compliance rate</strong> across 500+ critical incidents.</li>
+          <li>Analyzed and tuned backend SQL queries, indexing strategies, and execution plans, reducing database transaction latency by up to <strong>40%</strong>.</li>
+          <li>Investigated backend anomalies in complex payroll calculations, shift attendance sync, and biometric logs using SQL profiling and system trace logs.</li>
+          <li>Partnered with core product engineering and QA to reproduce application defects, verify hotfixes, and document detailed Root Cause Analysis (RCA) findings.</li>
+          <li>Formulated client onboarding workflows and technical resolution knowledgebases, reducing recurring support inquiries by <strong>30%</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Technical Support & System Administrator</span>
+          <span class="exp-period">2021 - 2023</span>
+        </div>
+        <div class="exp-company">IT Solutions & Business Systems</div>
+        <ul class="exp-bullets">
+          <li>Administered enterprise Windows Server and Linux hosts, Active Directory credentials, group policies, and network security protocols for 200+ users.</li>
+          <li>Configured automated SQL database backup schedules and validated zero-data-loss disaster recovery protocols with 100% data recoverability.</li>
+          <li>Monitored CPU, memory utilization, and network traffic thresholds, proactively averting infrastructure downtime and bottlenecks.</li>
+          <li>Executed data validation and schema integrity checks during multi-site ERP migration rollouts.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Enterprise Clients Supported -->
+    <section class="section">
+      <h2 class="section-heading"><i class="fa-solid fa-shield-halved"></i> Enterprise Client Accounts Supported</h2>
+      <p class="summary-text" style="margin-bottom: 0.4rem;">
+        Delivered mission-critical software support, HRMS/ERP integrations, and database operations for premier enterprise accounts:
+      </p>
+      <div class="clients-pills">
+        <span class="client-pill"><i class="fa-solid fa-check"></i> DHL (Logistics)</span>
+        <span class="client-pill"><i class="fa-solid fa-check"></i> Nestlé (Global FMCG)</span>
+        <span class="client-pill"><i class="fa-solid fa-check"></i> Qatar Steel (Industrial)</span>
+        <span class="client-pill"><i class="fa-solid fa-check"></i> Nextcare (Health TPA)</span>
+        <span class="client-pill"><i class="fa-solid fa-check"></i> Dabur (FMCG)</span>
+        <span class="client-pill"><i class="fa-solid fa-check"></i> Al Maryah Bank (Banking)</span>
+        <span class="client-pill"><i class="fa-solid fa-check"></i> DFS Group - LVMH (Retail)</span>
+        <span class="client-pill"><i class="fa-solid fa-check"></i> Tiffany & Co. (Luxury)</span>
+        <span class="client-pill"><i class="fa-solid fa-check"></i> Accor Hotels (Hospitality)</span>
+        <span class="client-pill"><i class="fa-solid fa-check"></i> NAS Neuron (Health TPA)</span>
+      </div>
+    </section>
+
+    <!-- Technical Skills Matrix -->
+    <section class="section">
+      <h2 class="section-heading"><i class="fa-solid fa-sliders"></i> Technical Skills Matrix</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="fa-solid fa-database" style="color: var(--primary);"></i> Database Management</div>
+          <div class="skill-cat-items">Microsoft SQL Server, MySQL, T-SQL, Query Tuning, Index Optimization, Execution Plans, Stored Procedures, Backups & Recovery.</div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="fa-solid fa-layer-group" style="color: var(--primary);"></i> Enterprise Applications</div>
+          <div class="skill-cat-items">HRMS Platforms, ERP Business Suites, Shift Management, Payroll Calculation Engines, Biometric Integration, POS Sync.</div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="fa-solid fa-server" style="color: var(--primary);"></i> System Administration</div>
+          <div class="skill-cat-items">Windows Server (2016-2022), Linux (RHEL, CentOS), Active Directory, Group Policy, IIS, DNS/DHCP, Infrastructure Monitoring.</div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-title"><i class="fa-solid fa-headset" style="color: var(--primary);"></i> Support & Operations</div>
+          <div class="skill-cat-items">L2/L3 Production Support, Root Cause Analysis (RCA), SLA Compliance, Jira, ServiceNow, Incident Escalation, API Diagnostics.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Training -->
+    <section class="section">
+      <div class="two-col">
+        <div>
+          <h2 class="section-heading"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+          <div class="edu-item">
+            <h4>Computer Science & Information Technology</h4>
+            <p>Undergraduate Degree / Diploma in Computing & Systems</p>
+          </div>
+        </div>
+        <div>
+          <h2 class="section-heading"><i class="fa-solid fa-certificate"></i> Certifications & Training</h2>
+          <div class="cert-item">
+            <h4>Enterprise SQL & System Administration</h4>
+            <p>Database Optimization, ITIL Support Practices, Network Fundamentals</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Auto print if query parameter ?download=true is passed
+    if (window.location.search.includes('download=true')) {
+      window.addEventListener('load', () => {
+        setTimeout(() => window.print(), 350);
+      });
+    }
+  </script>
+</body>
+
+</html>

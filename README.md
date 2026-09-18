@@ -25,5 +25,6 @@ I'm Mohammed Rahees CP, a Software Support Engineer with 3+ years of experience 
 
 💼 LinkedIn: linkedin.com/in/mohammed-rahees-cp  
 📸 Instagram: instagram.com/raheezcp._  
-📧 Email: raheescp83@gmail.com
+📧 Personal Email: raheescp83@gmail.com  
+💼 Work / Outlook: rahees.cp@dli-pdc.com
 

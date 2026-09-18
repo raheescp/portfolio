@@ -210,7 +210,36 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Simulated form submission state
+      // Format messages for WhatsApp and SMS
+      const senderName = nameInput.value.trim();
+      const senderEmail = emailInput.value.trim();
+      const category = serviceCategory ? serviceCategory.value : 'General Inquiry';
+      const subject = subjectInput.value.trim();
+      const messageBody = messageInput.value.trim();
+
+      const waMessage = `*New Inquiry via Mohammed Rahees Portfolio*
+----------------------------------------
+*From:* ${senderName}
+*Email:* ${senderEmail}
+*Category:* ${category}
+*Subject:* ${subject}
+
+*Message:*
+${messageBody}
+----------------------------------------`;
+
+      const smsMessage = `Portfolio Msg from ${senderName} (${senderEmail}): [${category}] ${subject} - ${messageBody}`;
+
+      const waUrl = `https://api.whatsapp.com/send?phone=917994147039&text=${encodeURIComponent(waMessage)}`;
+      const smsUrl = `sms:+917994147039?body=${encodeURIComponent(smsMessage)}`;
+
+      // Update feedback action links
+      const feedbackWhatsAppBtn = document.getElementById('feedbackWhatsAppBtn');
+      const feedbackSmsBtn = document.getElementById('feedbackSmsBtn');
+      if (feedbackWhatsAppBtn) feedbackWhatsAppBtn.href = waUrl;
+      if (feedbackSmsBtn) feedbackSmsBtn.href = smsUrl;
+
+      // Active form submission state
       const btnText = submitBtn.querySelector('.btn-text');
       const btnSpinner = submitBtn.querySelector('.btn-spinner');
 
@@ -218,26 +247,118 @@ document.addEventListener('DOMContentLoaded', () => {
       btnSpinner.style.display = 'inline-block';
       submitBtn.disabled = true;
 
-      setTimeout(() => {
+      // Dispatch to Gmail & Mobile via FormSubmit endpoint silently in background
+      const formPayload = {
+        'Full Name': senderName,
+        'Email Address': senderEmail,
+        'Area of Interest': category,
+        'Subject': subject,
+        'Message': messageBody,
+        'Recipient Mobile': '+91 7994147039',
+        _cc: 'raheescp83@gmail.com,rahees.cp@dli-pdc.com',
+        _captcha: 'false',
+        _template: 'table',
+        _subject: `[Portfolio Inquiry] ${subject} - from ${senderName}`,
+        _replyto: senderEmail
+      };
+
+      // Trigger automated background WhatsApp notification via CallMeBot API to +91 7994147039
+      const CALLMEBOT_API_KEY = window.CALLMEBOT_API_KEY || localStorage.getItem('mr_callmebot_key') || '';
+      if (CALLMEBOT_API_KEY) {
+        const waAlert = encodeURIComponent(
+          `🔔 *New Portfolio Message Alert*\n\n` +
+          `👤 *From:* ${senderName}\n` +
+          `📧 *Email:* ${senderEmail}\n` +
+          `📁 *Area:* ${category}\n` +
+          `📌 *Subject:* ${subject}\n\n` +
+          `💬 *Message:* ${messageBody}\n\n` +
+          `Sent to raheesc83@gmail.com & rahees.cp@dli-pdc.com`
+        );
+        fetch(`https://api.callmebot.com/whatsapp.php?phone=917994147039&text=${waAlert}&apikey=${CALLMEBOT_API_KEY}`, { mode: 'no-cors' })
+          .then(() => console.info('Automated WhatsApp alert sent to +91 7994147039'))
+          .catch(e => console.warn('CallMeBot notification notice:', e));
+      }
+
+      // Update hidden subject for standard form submissions
+      const formHiddenSubject = document.getElementById('formHiddenSubject');
+      if (formHiddenSubject) {
+        formHiddenSubject.value = `[Portfolio Inquiry] ${subject} - from ${senderName}`;
+      }
+
+      // If page is viewed locally as a file:/// HTML file, standard form submission is required by FormSubmit
+      if (window.location.protocol === 'file:') {
+        showToast('Submitting via FormSubmit... Please confirm activation if prompted.', 'info');
+        contactForm.submit();
+        return;
+      }
+
+      // If running on a web server (http: / https: e.g. GitHub Pages, Netlify, Vercel), submit via AJAX
+      fetch('https://formsubmit.co/ajax/raheesc83@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formPayload)
+      })
+      .then(res => res.json())
+      .then(data => {
         btnText.style.display = 'inline-block';
         btnSpinner.style.display = 'none';
         submitBtn.disabled = false;
 
-        // Display feedback banner
+        if (data.success === 'true' || data.success === true) {
+          if (feedbackAlert) {
+            feedbackAlert.style.display = 'flex';
+            feedbackAlert.innerHTML = `
+              <i class="fa-solid fa-circle-check feedback-main-icon"></i>
+              <div class="feedback-content">
+                <strong>Message Dispatched Successfully!</strong>
+                <p>Thank you, <strong>${senderName}</strong>. Your message has been forwarded to <strong>raheesc83@gmail.com</strong> and <strong>rahees.cp@dli-pdc.com</strong>. You will receive a reply shortly.</p>
+              </div>
+            `;
+          }
+          showToast('Message sent to your email & mobile!', 'success');
+          contactForm.reset();
+        } else if (data.message && data.message.toLowerCase().includes('activation')) {
+          if (feedbackAlert) {
+            feedbackAlert.style.display = 'flex';
+            feedbackAlert.innerHTML = `
+              <i class="fa-solid fa-triangle-exclamation feedback-main-icon" style="color: #f59e0b;"></i>
+              <div class="feedback-content">
+                <strong style="color: #f59e0b;">Action Required: Activate Form</strong>
+                <p>FormSubmit has sent an activation email to <strong>raheesc83@gmail.com</strong>. Please open your Gmail (check <strong>Inbox</strong> &amp; <strong>Spam</strong>), and click <strong>'Activate Form'</strong> once. After that, all messages will arrive automatically!</p>
+              </div>
+            `;
+          }
+          showToast('Please check raheesc83@gmail.com to click "Activate Form" once!', 'warning');
+        } else {
+          showToast(data.message || 'Error sending message.', 'error');
+        }
+      })
+      .catch(err => {
+        console.warn('Form notice:', err);
+        btnText.style.display = 'inline-block';
+        btnSpinner.style.display = 'none';
+        submitBtn.disabled = false;
+        
+        // Graceful fallback to mailto if network error
         if (feedbackAlert) {
           feedbackAlert.style.display = 'flex';
+          const mailtoUrl = `mailto:raheesc83@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${senderName} (${senderEmail})\n\n${messageBody}`)}`;
+          feedbackAlert.innerHTML = `
+            <i class="fa-solid fa-envelope-circle-check feedback-main-icon"></i>
+            <div class="feedback-content">
+              <strong>Offline / Network Notice</strong>
+              <p>Could not reach the automated mail gateway directly from this origin. Click below to send via your email client:</p>
+              <a href="${mailtoUrl}" class="feedback-btn feedback-sms" style="display: inline-flex; margin-top: 0.5rem;">
+                <i class="fa-solid fa-envelope"></i> Open Email Client to Send
+              </a>
+            </div>
+          `;
         }
-
-        showToast('Message sent! Mohammed Rahees will reply soon.', 'success');
-
-        // Optional mailto fallback option for the user
-        const mailtoSubject = encodeURIComponent(`[${serviceCategory.value}] ${subjectInput.value.trim()}`);
-        const mailtoBody = encodeURIComponent(`Hello Mohammed Rahees,\n\n${messageInput.value.trim()}\n\nBest regards,\n${nameInput.value.trim()} (${emailInput.value.trim()})`);
-        
-        console.info(`Contact message from ${nameInput.value.trim()} ready: mailto:raheescp.work@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`);
-
-        contactForm.reset();
-      }, 1000);
+        showToast('Network issue. Click the button to send via Email.', 'error');
+      });
     });
   }
 
