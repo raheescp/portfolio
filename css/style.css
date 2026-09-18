@@ -1869,3 +1869,118 @@ ul {
     padding: 1.5rem;
   }
 }
+
+/* ==========================================================================
+   Custom Interactive Cursor Styles
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor .btn,
+  body.has-custom-cursor .filter-tab,
+  body.has-custom-cursor .theme-toggle,
+  body.has-custom-cursor .hamburger-btn,
+  body.has-custom-cursor .contact-card,
+  body.has-custom-cursor .skill-category-card,
+  body.has-custom-cursor .back-to-top {
+    cursor: none !important;
+  }
+
+  body.has-custom-cursor input[type="text"],
+  body.has-custom-cursor input[type="email"],
+  body.has-custom-cursor textarea,
+  body.has-custom-cursor select {
+    cursor: text !important;
+  }
+}
+
+/* Precision Inner Dot (Small Cursor) */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 100000;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(var(--primary-accent-rgb), 0.8), 0 0 20px rgba(var(--primary-accent-rgb), 0.4);
+  transition: opacity 0.25s ease, transform 0.15s ease-out, background-color 0.2s ease, width 0.2s ease, height 0.2s ease;
+  will-change: left, top, transform, opacity;
+}
+
+/* Smooth Trailing Follower Ring */
+.custom-cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(var(--primary-accent-rgb), 0.55);
+  background-color: rgba(var(--primary-accent-rgb), 0.04);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  box-shadow: 0 0 16px rgba(var(--primary-accent-rgb), 0.12);
+  transition: opacity 0.3s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease, width 0.2s ease, height 0.2s ease;
+  will-change: left, top, transform, opacity;
+}
+
+/* Visible State */
+.custom-cursor-dot.visible,
+.custom-cursor-outline.visible {
+  opacity: 1;
+}
+
+/* Hovering Interactive Target State */
+.custom-cursor-outline.cursor-hover {
+  width: 52px;
+  height: 52px;
+  border-color: rgba(var(--primary-accent-rgb), 0.95);
+  background-color: rgba(var(--primary-accent-rgb), 0.15);
+  box-shadow: 0 0 24px rgba(var(--primary-accent-rgb), 0.28);
+  backdrop-filter: blur(2px);
+}
+
+.custom-cursor-dot.cursor-hover {
+  transform: translate(-50%, -50%) scale(0.6);
+  background-color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+}
+
+/* Click / Active Press State */
+.custom-cursor-outline.cursor-active {
+  transform: translate(-50%, -50%) scale(0.8);
+  background-color: rgba(var(--primary-accent-rgb), 0.3);
+  border-color: var(--primary-accent);
+}
+
+.custom-cursor-dot.cursor-active {
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+/* Input Fields & Text Selection State */
+.custom-cursor-outline.cursor-text {
+  opacity: 0.15;
+  transform: translate(-50%, -50%) scale(0.7);
+}
+
+.custom-cursor-dot.cursor-text {
+  opacity: 0.5;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+/* Hide custom cursor completely on touch devices */
+@media (hover: none) or (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-outline {
+    display: none !important;
+  }
+}
+

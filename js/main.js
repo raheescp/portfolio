@@ -305,4 +305,117 @@ document.addEventListener('DOMContentLoaded', () => {
 
     progressBars.forEach(bar => observer.observe(bar));
   }
+
+  // ==========================================
+  // 9. Custom Interactive Cursor (Dot + Follower)
+  // ==========================================
+  const initCustomCursor = () => {
+    // Only activate on devices with fine pointer (mouse / trackpad)
+    const isTouchDevice = window.matchMedia('(hover: none) or (pointer: coarse)').matches;
+    if (isTouchDevice) return;
+
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorOutline = document.getElementById('cursorOutline');
+    if (!cursorDot || !cursorOutline) return;
+
+    document.body.classList.add('has-custom-cursor');
+
+    const mouse = { x: -100, y: -100 };
+    const outline = { x: -100, y: -100 };
+    let isVisible = false;
+    let isClicking = false;
+
+    // Direct, zero-delay movement for precision inner dot
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+
+      cursorDot.style.left = `${mouse.x}px`;
+      cursorDot.style.top = `${mouse.y}px`;
+
+      if (!isVisible) {
+        isVisible = true;
+        // Snap outline position on first move to prevent offscreen swoop
+        outline.x = mouse.x;
+        outline.y = mouse.y;
+        cursorOutline.style.left = `${outline.x}px`;
+        cursorOutline.style.top = `${outline.y}px`;
+
+        cursorDot.classList.add('visible');
+        cursorOutline.classList.add('visible');
+      }
+    });
+
+    // Smooth physics-based follower loop using linear interpolation (lerp)
+    const lerpFactor = 0.18;
+    const animateOutline = () => {
+      if (isVisible) {
+        outline.x += (mouse.x - outline.x) * lerpFactor;
+        outline.y += (mouse.y - outline.y) * lerpFactor;
+
+        cursorOutline.style.left = `${outline.x}px`;
+        cursorOutline.style.top = `${outline.y}px`;
+      }
+      requestAnimationFrame(animateOutline);
+    };
+    requestAnimationFrame(animateOutline);
+
+    // Click / Press feedback
+    window.addEventListener('mousedown', () => {
+      isClicking = true;
+      cursorOutline.classList.add('cursor-active');
+      cursorDot.classList.add('cursor-active');
+    });
+
+    window.addEventListener('mouseup', () => {
+      isClicking = false;
+      cursorOutline.classList.remove('cursor-active');
+      cursorDot.classList.remove('cursor-active');
+    });
+
+    // Handle cursor leaving and entering window
+    document.addEventListener('mouseleave', () => {
+      isVisible = false;
+      cursorDot.classList.remove('visible');
+      cursorOutline.classList.remove('visible');
+    });
+
+    document.addEventListener('mouseenter', () => {
+      isVisible = true;
+      cursorDot.classList.add('visible');
+      cursorOutline.classList.add('visible');
+    });
+
+    // Delegation for interactive element hover states
+    const interactiveSelector = 'a, button, .btn, .filter-tab, .theme-toggle, .hamburger-btn, .contact-card, .skill-category-card, .service-card, .project-card, .timeline-item, .metric-card, .back-to-top, [role="button"], input[type="submit"]';
+    const textSelector = 'input[type="text"], input[type="email"], textarea, select';
+
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(textSelector)) {
+        cursorOutline.classList.add('cursor-text');
+        cursorDot.classList.add('cursor-text');
+        cursorOutline.classList.remove('cursor-hover');
+        cursorDot.classList.remove('cursor-hover');
+      } else if (e.target.closest(interactiveSelector)) {
+        cursorOutline.classList.add('cursor-hover');
+        cursorDot.classList.add('cursor-hover');
+        cursorOutline.classList.remove('cursor-text');
+        cursorDot.classList.remove('cursor-text');
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      const related = e.relatedTarget;
+      if (!related || !related.closest(textSelector)) {
+        cursorOutline.classList.remove('cursor-text');
+        cursorDot.classList.remove('cursor-text');
+      }
+      if (!related || !related.closest(interactiveSelector)) {
+        cursorOutline.classList.remove('cursor-hover');
+        cursorDot.classList.remove('cursor-hover');
+      }
+    });
+  };
+
+  initCustomCursor();
 });
