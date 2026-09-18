@@ -739,6 +739,365 @@ ul {
 .code-string { color: #4ade80; }
 
 /* ==========================================================================
+   Enterprise Clients Section
+   ========================================================================== */
+.clients-section {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Infinite Marquee Ribbon --- */
+.clients-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 1.5rem 0 3.5rem 0;
+  padding: 0.75rem 0;
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+.clients-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1.25rem;
+  animation: clientMarquee 38s linear infinite;
+  will-change: transform;
+}
+
+.clients-marquee-wrapper:hover .clients-marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 1.4rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  backdrop-filter: blur(8px);
+}
+
+.marquee-item:hover {
+  border-color: var(--primary-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
+}
+
+.marquee-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: rgba(var(--primary-accent-rgb), 0.12);
+  color: var(--primary-accent);
+}
+
+.marquee-brand-text {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+}
+
+@keyframes clientMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- Enterprise Clients Grid --- */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+.client-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: transform var(--transition-smooth), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+.client-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(var(--primary-accent-rgb), 0.5), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.client-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-color-hover);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(var(--primary-accent-rgb), 0.12);
+}
+
+.client-card:hover::before {
+  opacity: 1;
+}
+
+.client-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  gap: 0.75rem;
+}
+
+.client-logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition-fast);
+}
+
+.client-card:hover .client-logo-box {
+  transform: scale(1.03);
+}
+
+.client-vector-svg {
+  width: 145px;
+  height: 44px;
+  display: block;
+}
+
+/* Industry Badges */
+.client-industry-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.badge-logistics {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.28);
+}
+
+.badge-fmcg {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.28);
+}
+
+.badge-heavy {
+  color: #fb7185;
+  background: rgba(251, 113, 133, 0.12);
+  border-color: rgba(251, 113, 133, 0.28);
+}
+
+.badge-health {
+  color: #fb923c;
+  background: rgba(251, 146, 60, 0.12);
+  border-color: rgba(251, 146, 60, 0.28);
+}
+
+.badge-fintech {
+  color: #2dd4bf;
+  background: rgba(45, 212, 191, 0.12);
+  border-color: rgba(45, 212, 191, 0.28);
+}
+
+.badge-luxury {
+  color: #e879f9;
+  background: rgba(232, 121, 249, 0.12);
+  border-color: rgba(232, 121, 249, 0.28);
+}
+
+.badge-hospitality {
+  color: #facc15;
+  background: rgba(250, 204, 21, 0.12);
+  border-color: rgba(250, 204, 21, 0.28);
+}
+
+/* Card Body & Details */
+.client-card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.client-identity {
+  margin-bottom: 0.75rem;
+}
+
+.client-name {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.client-geography {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.client-geography i {
+  color: var(--primary-accent);
+  font-size: 0.75rem;
+}
+
+.client-summary {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.client-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: auto;
+}
+
+.client-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.client-card:hover .client-tag {
+  border-color: rgba(var(--primary-accent-rgb), 0.25);
+  color: var(--text-primary);
+}
+
+.client-tag i {
+  color: var(--primary-accent);
+  font-size: 0.7rem;
+}
+
+/* --- Enterprise Impact Highlights Strip --- */
+.enterprise-trust-strip {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.5rem;
+  gap: 2rem;
+  backdrop-filter: blur(12px);
+  position: relative;
+  box-shadow: var(--shadow-md);
+}
+
+.trust-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.trust-metric-num {
+  font-size: 2.25rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+}
+
+.trust-metric-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  max-width: 250px;
+  line-height: 1.45;
+}
+
+.trust-metric-divider {
+  width: 1px;
+  height: 50px;
+  background: var(--border-color);
+}
+
+/* Light Mode Overrides for Clients Section */
+[data-theme="light"] .client-tag {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .client-card:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), 0 0 20px rgba(var(--primary-accent-rgb), 0.1);
+}
+
+/* Responsive Breakpoints for Clients Section */
+@media (max-width: 1024px) {
+  .clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .clients-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .enterprise-trust-strip {
+    flex-direction: column;
+    padding: 1.75rem;
+    gap: 1.5rem;
+  }
+
+  .trust-metric-divider {
+    width: 80%;
+    height: 1px;
+  }
+}
+
+/* ==========================================================================
    About Section
    ========================================================================== */
 .about-section {
@@ -1883,6 +2242,8 @@ ul {
   body.has-custom-cursor .hamburger-btn,
   body.has-custom-cursor .contact-card,
   body.has-custom-cursor .skill-category-card,
+  body.has-custom-cursor .client-card,
+  body.has-custom-cursor .marquee-item,
   body.has-custom-cursor .back-to-top {
     cursor: none !important;
   }

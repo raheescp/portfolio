@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Delegation for interactive element hover states
-    const interactiveSelector = 'a, button, .btn, .filter-tab, .theme-toggle, .hamburger-btn, .contact-card, .skill-category-card, .service-card, .project-card, .timeline-item, .metric-card, .back-to-top, [role="button"], input[type="submit"]';
+    const interactiveSelector = 'a, button, .btn, .filter-tab, .theme-toggle, .hamburger-btn, .contact-card, .skill-category-card, .client-card, .marquee-item, .service-card, .project-card, .timeline-item, .metric-card, .back-to-top, [role="button"], input[type="submit"]';
     const textSelector = 'input[type="text"], input[type="email"], textarea, select';
 
     document.addEventListener('mouseover', (e) => {
