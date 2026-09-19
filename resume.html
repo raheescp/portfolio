@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammed Rahees CP - Curriculum Vitae</title>
-  <meta name="description" content="Official Curriculum Vitae of Mohammed Rahees CP - Software Support Engineer at DLI Systems.">
+  <title>Mohammed Rahees CP — Curriculum Vitae</title>
+  <meta name="description" content="Official Curriculum Vitae of Mohammed Rahees CP - Software Support Engineer.">
 
-  <!-- Classic Serif Typography -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -18,64 +18,49 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    :root {
-      --text-color: #111827;
-      --heading-color: #000000;
-      --border-color: #111827;
-      --bg-page: #f1f5f9;
-      --bg-paper: #ffffff;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      font-family: 'Charis SIL', 'Times New Roman', Times, Georgia, serif;
-      color: var(--text-color);
-      background-color: var(--bg-page);
-      line-height: 1.34;
-      font-size: 13.2px;
-      -webkit-font-smoothing: antialiased;
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background: #0f172a;
+      font-family: 'Inter', sans-serif;
     }
 
-    /* Floating Toolbar (Screen only) */
-    .resume-toolbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 56px;
+    .cv-topbar {
+      height: 54px;
       background: #0f172a;
-      color: #ffffff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 1.5rem;
-      z-index: 99999;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+      z-index: 100;
     }
 
-    .toolbar-title {
+    .cv-title {
       font-family: 'Outfit', sans-serif;
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: #38bdf8;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
-    .toolbar-actions {
+    .cv-actions {
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
 
-    .t-btn {
+    .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
@@ -86,478 +71,56 @@
       text-decoration: none;
       cursor: pointer;
       transition: all 0.2s ease;
-      border: 1px solid transparent;
-      font-family: 'Inter', sans-serif;
     }
 
-    .t-btn-primary {
-      background: #0284c7;
-      color: #ffffff;
-    }
-
-    .t-btn-primary:hover {
-      background: #0369a1;
-      transform: translateY(-1px);
-    }
-
-    .t-btn-outline {
+    .btn-outline {
       background: rgba(255, 255, 255, 0.1);
       color: #f1f5f9;
-      border-color: rgba(255, 255, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .t-btn-outline:hover {
+    .btn-outline:hover {
       background: rgba(255, 255, 255, 0.2);
       color: #ffffff;
     }
 
-    /* Page Container */
-    .cv-page {
-      max-width: 820px;
-      margin: 75px auto 30px auto;
-      background: var(--bg-paper);
-      padding: 3rem 3.5rem 2rem 3.5rem;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-      border-radius: 2px;
-      position: relative;
+    .btn-primary {
+      background: #0284c7;
+      color: #ffffff;
+      border: 1px solid transparent;
     }
 
-    .cv-page-2 {
-      margin-top: 20px;
+    .btn-primary:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
     }
 
-    /* Header */
-    .cv-header {
-      text-align: center;
-      margin-bottom: 1.25rem;
-    }
-
-    .cv-name {
-      font-size: 2.15rem;
-      font-weight: 700;
-      color: var(--heading-color);
-      letter-spacing: -0.01em;
-      line-height: 1.1;
-      margin-bottom: 0.25rem;
-    }
-
-    .cv-subtitle {
-      font-size: 1.25rem;
-      font-style: italic;
-      color: #1f2937;
-      margin-bottom: 0.45rem;
-    }
-
-    .cv-contact-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.4rem 1.4rem;
-      font-size: 0.88rem;
-      color: #1f2937;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .cv-contact-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .cv-contact-item i {
-      font-size: 0.82rem;
-      color: #4b5563;
-    }
-
-    .cv-contact-item a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* Section Headings */
-    .cv-section {
-      margin-bottom: 1.05rem;
-    }
-
-    .cv-section-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--heading-color);
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.15rem;
-      margin-bottom: 0.45rem;
-      letter-spacing: -0.01em;
-    }
-
-    /* Text Blocks */
-    .cv-paragraph {
-      text-align: justify;
-      color: #1f2937;
-      font-size: 0.88rem;
-      line-height: 1.4;
-    }
-
-    /* Skills List */
-    .skills-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.22rem;
-      font-size: 0.88rem;
-    }
-
-    .skill-line {
-      color: #1f2937;
-      line-height: 1.36;
-    }
-
-    .skill-label {
-      font-weight: 700;
-      color: #000000;
-    }
-
-    /* Experience & Education Entries */
-    .cv-entry {
-      margin-bottom: 0.65rem;
-    }
-
-    .cv-entry:last-child {
-      margin-bottom: 0;
-    }
-
-    .cv-entry-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-    }
-
-    .cv-entry-title {
-      font-weight: 700;
-      font-size: 0.92rem;
-      color: #000000;
-    }
-
-    .cv-entry-location,
-    .cv-entry-date {
-      font-style: italic;
-      font-size: 0.88rem;
-      color: #1f2937;
-    }
-
-    .cv-entry-sub {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      font-style: italic;
-      font-size: 0.88rem;
-      color: #1f2937;
-      margin-bottom: 0.25rem;
-    }
-
-    /* Bullets */
-    .cv-bullets {
-      list-style-type: none;
-      padding-left: 0;
-      margin-top: 0.2rem;
-    }
-
-    .cv-bullets li {
-      position: relative;
-      padding-left: 1.25rem;
-      margin-bottom: 0.2rem;
-      font-size: 0.87rem;
-      line-height: 1.36;
-      color: #1f2937;
-      text-align: justify;
-    }
-
-    .cv-bullets li::before {
-      content: "◦";
-      position: absolute;
-      left: 0.25rem;
-      top: -0.15rem;
-      font-size: 1.1rem;
-      color: #374151;
-    }
-
-    /* Footer / Page Number */
-    .cv-page-footer {
-      text-align: center;
-      font-size: 0.78rem;
-      font-style: italic;
-      color: #6b7280;
-      margin-top: 1.5rem;
-      padding-top: 0.5rem;
-    }
-
-    /* Print Setup */
-    @media print {
-      body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        font-size: 9.8pt !important;
-      }
-
-      .resume-toolbar {
-        display: none !important;
-      }
-
-      .cv-page {
-        margin: 0 !important;
-        padding: 0 !important;
-        max-width: 100% !important;
-        box-shadow: none !important;
-        border-radius: 0 !important;
-      }
-
-      .cv-page-2 {
-        page-break-before: always;
-        padding-top: 1.5cm !important;
-      }
-
-      .cv-paragraph, .cv-bullets li {
-        font-size: 9.6pt !important;
-        line-height: 1.34 !important;
-      }
-
-      .cv-section {
-        margin-bottom: 9pt !important;
-      }
-
-      .cv-page-footer {
-        margin-top: 15pt !important;
-      }
-
-      @page {
-        margin: 1.5cm 1.8cm 1.5cm 1.8cm;
-        size: A4 portrait;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .cv-page {
-        padding: 1.5rem 1.25rem;
-        margin-top: 70px;
-      }
-      .cv-entry-header, .cv-entry-sub {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    .pdf-viewer-frame {
+      width: 100%;
+      height: calc(100% - 54px);
+      border: none;
+      display: block;
+      background: #525659;
     }
   </style>
 </head>
 
 <body>
-  <!-- Floating Action Toolbar (Screen only) -->
-  <header class="resume-toolbar">
-    <div class="toolbar-title">
+  <header class="cv-topbar">
+    <div class="cv-title">
       <i class="fa-solid fa-file-pdf"></i> Mohammed Rahees CP — Curriculum Vitae
     </div>
-    <div class="toolbar-actions">
-      <a href="index.html" class="t-btn t-btn-outline" title="Return to portfolio">
+    <div class="cv-actions">
+      <a href="index.html" class="btn btn-outline" title="Return to portfolio">
         <i class="fa-solid fa-arrow-left"></i> Portfolio
       </a>
-      <a href="assets/Mohammed_Rahees_CP_Resume.pdf" download="Mohammed_Rahees_CP_Resume.pdf" class="t-btn t-btn-outline" title="Direct download PDF">
-        <i class="fa-solid fa-file-arrow-down"></i> Download PDF
+      <a href="assets/Mohammed_Rahees_CP_Resume.pdf" download="Mohammed_Rahees_CP_Resume.pdf" class="btn btn-primary" title="Download exact original CV (PDF)">
+        <i class="fa-solid fa-file-arrow-down"></i> Download Original CV
       </a>
-      <button onclick="window.print()" class="t-btn t-btn-primary" title="Print or save as PDF">
-        <i class="fa-solid fa-print"></i> Print / Save PDF
-      </button>
     </div>
   </header>
 
-  <!-- Page 1 -->
-  <div class="cv-page">
-    <header class="cv-header">
-      <h1 class="cv-name">Mohammed Rahees CP</h1>
-      <div class="cv-subtitle">Software Support Engineer</div>
-      <div class="cv-contact-row">
-        <span class="cv-contact-item">
-          <i class="fa-solid fa-phone"></i>
-          <a href="tel:+917994147039">+91 7994 14 70 39</a>
-        </span>
-        <span class="cv-contact-item">
-          <i class="fa-solid fa-envelope"></i>
-          <a href="mailto:raheescp83@gmail.com">raheescp83@gmail.com</a>
-        </span>
-        <span class="cv-contact-item">
-          <i class="fa-brands fa-linkedin"></i>
-          <a href="https://www.linkedin.com/in/mohammed-rahees-cp" target="_blank" rel="noopener noreferrer">linkedin.com/in/mohammed-rahees-cp</a>
-        </span>
-      </div>
-    </header>
-
-    <!-- Professional Summary -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">Professional Summary</h2>
-      <p class="cv-paragraph">
-        Results-driven Software Support Engineer with over 3 years of experience providing L2/L3 production support for enterprise HRMS, Payroll, Attendance, and Leave Management systems across the United Arab Emirates and the Kingdom of Saudi Arabia. Experienced in SQL database management, production incident resolution, ERP integrations, application deployment, and enterprise system administration. Skilled in troubleshooting complex technical issues, conducting root cause analysis (RCA), ensuring SLA compliance, and collaborating with cross-functional teams to deliver reliable and scalable business solutions. Strong expertise in customer support, enterprise application maintenance, and production environment management.
-      </p>
-    </section>
-
-    <!-- Technical Skills -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">Technical Skills</h2>
-      <div class="skills-list">
-        <div class="skill-line">
-          <span class="skill-label">Databases:</span> SQL Server, MySQL, Oracle
-        </div>
-        <div class="skill-line">
-          <span class="skill-label">Programming:</span> SQL, C++, Python (Basic)
-        </div>
-        <div class="skill-line">
-          <span class="skill-label">Enterprise Systems:</span> HRMS, Payroll, Attendance &amp; Leave Management
-        </div>
-        <div class="skill-line">
-          <span class="skill-label">Reporting &amp; Analytics:</span> Power BI, Tableau, Advanced Excel
-        </div>
-        <div class="skill-line">
-          <span class="skill-label">ERP Platforms:</span> SAP ERP, Oracle, Sage, Focus ERP
-        </div>
-        <div class="skill-line">
-          <span class="skill-label">Infrastructure:</span> Backup &amp; Recovery, VPN, Firewall, System Configuration
-        </div>
-        <div class="skill-line">
-          <span class="skill-label">Emerging Tech:</span> Cloud Computing, Azure ML, Generative AI
-        </div>
-        <div class="skill-line">
-          <span class="skill-label">Enterprise System Integrations:</span> Microsoft Solutions, Oracle Systems, SAP ERP Solutions, Sage Accounting Systems, Focus ERP Systems
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">Experience</h2>
-
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Software Support Engineer</span>
-          <span class="cv-entry-location">India / UAE</span>
-        </div>
-        <div class="cv-entry-sub">
-          <span>DLI Systems</span>
-          <span class="cv-entry-date">Jul 2024 to Present</span>
-        </div>
-        <ul class="cv-bullets">
-          <li>Provided <strong>L2/L3 support</strong> for HRMS, Payroll, Attendance and Leave Management systems.</li>
-          <li>Supported payroll processing and validated attendance, leave and employee master data.</li>
-          <li>Resolved production incidents using SQL and backend troubleshooting while meeting SLA targets.</li>
-          <li>Performed database validation, data corrections and deployment support.</li>
-          <li>Coordinated with development teams for bug fixes, patches and releases.</li>
-          <li>Led DU Corp (UAE) project coordination from planning to sign-off.</li>
-          <li>Conducted Root Cause Analysis (RCA) and improved reporting through Excel dashboards.</li>
-          <li>Supported enterprise customers including <strong>DHL, Nestlé, MBC Group, Qatar Steel, Nextcare, Dabur, Al Maryah Bank, Fakieh Group, Yanbu Steel Company</strong> and others.</li>
-        </ul>
-      </div>
-
-      <div class="cv-entry" style="margin-top: 0.55rem;">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">System Administrator Intern</span>
-          <span class="cv-entry-date">Feb 2023 to Jun 2024</span>
-        </div>
-        <div class="cv-entry-sub">
-          <span>3AG Network Solutions</span>
-          <span></span>
-        </div>
-        <ul class="cv-bullets">
-          <li>Supported desktop, network and VPN issues.</li>
-          <li>Configured firewalls, switches and user accounts.</li>
-          <li>Performed system maintenance and backup &amp; recovery.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section class="cv-section" style="margin-bottom: 0;">
-      <h2 class="cv-section-title">Education</h2>
-
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Safi Institute of Advanced Study</span>
-          <span class="cv-entry-date">2020 to 2023</span>
-        </div>
-        <div class="cv-entry-sub" style="margin-bottom: 0.2rem;">
-          <span>Bachelor of Computer Applications (BCA), CGPA: 7.7</span>
-          <span></span>
-        </div>
-      </div>
-
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">PPMHSS Kottukkara</span>
-          <span></span>
-        </div>
-        <div class="cv-entry-sub" style="margin-bottom: 0;">
-          <span>Higher Secondary (Computer Science), 97.7%</span>
-          <span></span>
-        </div>
-      </div>
-    </section>
-
-    <div class="cv-page-footer">Mohammed Rahees CP - Page 1 of 2</div>
-  </div>
-
-  <!-- Page 2 -->
-  <div class="cv-page cv-page-2">
-    <!-- Certifications -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">Certifications</h2>
-      <ul class="cv-bullets" style="margin-top: 0;">
-        <li><strong>Software Support Engineer Certification</strong>, DLI Systems (2024 to 2026)</li>
-        <li><strong>Cloud Computing Certification</strong>, Besant Technologies (2024)</li>
-      </ul>
-    </section>
-
-    <!-- Projects -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">Projects</h2>
-
-      <div class="cv-entry">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Leave &amp; Time Attendance Management System</span>
-          <span class="cv-entry-date">2026</span>
-        </div>
-        <div class="cv-entry-sub">
-          <span>Web-Based Application</span>
-          <span></span>
-        </div>
-        <ul class="cv-bullets">
-          <li>Developed a web-based system to automate employee attendance and leave management using SQL database integration.</li>
-          <li>Implemented attendance tracking, working hours, leave records, and HR-related functionalities.</li>
-          <li>Successfully presented the project and secured <strong>1st Prize</strong> in the project competition.</li>
-        </ul>
-      </div>
-
-      <div class="cv-entry" style="margin-top: 0.75rem;">
-        <div class="cv-entry-header">
-          <span class="cv-entry-title">Travel Vlog Application</span>
-          <span></span>
-        </div>
-        <ul class="cv-bullets">
-          <li>Developed a web/mobile platform with travel updates, photo uploads, location tagging, real-time tracking and bookmarking.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Languages -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">Languages</h2>
-      <p class="cv-paragraph" style="font-size: 0.95rem;">
-        English &mdash; Arabic &mdash; Malayalam
-      </p>
-    </section>
-
-    <div class="cv-page-footer" style="margin-top: 5rem;">Mohammed Rahees CP - Page 2 of 2</div>
-  </div>
-
-  <script>
-    if (window.location.search.includes('download=true')) {
-      window.addEventListener('load', () => setTimeout(() => window.print(), 350));
-    }
-  </script>
+  <iframe src="assets/Mohammed_Rahees_CP_Resume.pdf#view=FitH" class="pdf-viewer-frame" title="Mohammed Rahees CP Curriculum Vitae"></iframe>
 </body>
 
 </html>

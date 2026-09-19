@@ -539,4 +539,31 @@ ${messageBody}
   };
 
   initCustomCursor();
+
+  // ==========================================
+  // Preloader / Minimalist Loading Theme Controller
+  // ==========================================
+  const initPreloader = () => {
+    const preloaderOverlay = document.getElementById('preloaderOverlay');
+    if (!preloaderOverlay) return;
+
+    const dismissPreloader = () => {
+      preloaderOverlay.classList.add('fade-out');
+      setTimeout(() => {
+        if (preloaderOverlay && preloaderOverlay.parentNode) {
+          preloaderOverlay.parentNode.removeChild(preloaderOverlay);
+        }
+      }, 500);
+    };
+
+    if (document.readyState === 'complete') {
+      setTimeout(dismissPreloader, 300);
+    } else {
+      window.addEventListener('load', () => setTimeout(dismissPreloader, 200));
+      // Fallback in case load event already fired or is delayed
+      setTimeout(dismissPreloader, 1000);
+    }
+  };
+
+  initPreloader();
 });
